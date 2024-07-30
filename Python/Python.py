@@ -1,3 +1,4 @@
+from discord import app_commands, Interaction, Embed
 import discord
 from discord import app_commands
 
@@ -10,14 +11,14 @@ tree = app_commands.CommandTree(client)
 async def on_ready():
     print('ログインしました')
 
-    await client.change_presence(status=discord.Status.online, activity=discord.CustomActivity(name='BETA版です'))
+    await client.change_presence(status=discord.Status.online, activity=discord.CustomActivity(name='バグの調査中'))
     # スラッシュコマンドを同期
     await tree.sync()
 
 
 @tree.command(name='call', description='scpsl募集します指定のサーバーのみ機能します')
 async def test(interaction: discord.Interaction):
-    await interaction.response.send_message('<:mukou:1267467191142322216> エラー')
+    await interaction.response.send_message('<:__:1267673604020109452>エラー')
 
 @tree.command(name='info', description='BOTの情報を表示します')
 async def test_command(interaction: discord.Interaction):
@@ -107,6 +108,36 @@ async def on_interaction(inter: discord.Interaction):
     except Exception as e:
         print(f"An error occurred: {e}")
 
+@tree.command(name='embed', description='運営パートナーを表示します')
+async def embed_command(interaction: Interaction):
+    embed = Embed(
+        title="リスト",
+        description="<:DEV:1267440009452064829>所有者<@1002132268736856136>　STEAMID:76561199555791158",
+        color=0x00ff00  # 緑色
+    )
+    embed.add_field(name="EVENTManager", value="<@1189153844043722753> STEAMID 76561199525003326", inline=False)
+    embed.add_field(name="EVENTManager", value="NotData", inline=True)
+    embed.add_field(name="moderator", value="NotDATA。", inline=False)
+    embed.add_field(name="<:1109542935038545960:1267745305214849035>Trusted", value="<@1135069041569054750> ", inline=True) 
+    embed.add_field(name="<:1109542935038545960:1267745305214849035>Trusted", value="<@1104907457597296762> ", inline=False)  
+    embed.add_field(name="<:1109542935038545960:1267745305214849035>Trusted", value="<@716212058445709362> ", inline=True)
+    embed.add_field(name="<:1109542935038545960:1267745305214849035>Trusted", value="<@1234473338706067486>", inline=False)
+    embed.add_field(name="<:1109542935038545960:1267745305214849035>Trusted", value="<@1085931921202229259> ", inline=True)
+    embed.add_field(name="<:partner:1267440895037542471>YT", value="<@1101479370197061672>。", inline=False)
+    embed.add_field(name="<:partner:1267440895037542471>YT", value="<@1020505405769666621>。", inline=True)
+    embed.add_field(name="<:partner:1267440895037542471>YT", value="<@1039717417116512327>。", inline=False)
+    embed.add_field(name="<:partner:1267440895037542471>YT", value="<@463867826676039690>。", inline=True)
+    embed.add_field(name="<:partner:1267440895037542471>YT", value="<@1020505405769666621>。", inline=False)
+    embed.add_field(name="<:partner:1267440895037542471>YT", value="<@297766775653924865>。", inline=True)
+    embed.add_field(name="<:partner:1267440895037542471>YT", value="<@1002132268736856136>。", inline=False)
+    embed.add_field(name="<:partner2:1267748273502818395>パートナー", value="<@1101479370197061672>。", inline=True)
+    embed.add_field(name="DIscordr", value="Notdata。", inline=False)
+    embed.set_footer(text="2024/7/30")
+    embed.set_thumbnail(url="https://example.com/thumbnail.jpg")
+    embed.set_image(url="https://example.com/image.jpg")
+
+    await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
-client.run("TOKEN")
+
+client.run("ToKEN")
